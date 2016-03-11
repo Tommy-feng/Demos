@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complicated Number</title>
+</head>
+<body>
+  8和12最小公倍数和最大公约数：
+  <p id="result">正在计算中，请稍等...</p>
+  <script type="text/javascript">
+    var worker = new Worker('numberWorker.js');
+    //给一个专用线程发送数据，用postMessage(data )
+    //data可以为二进制数据，也可以为json
+    worker.postMessage({first: 8, second: 12});
+    //接收专用线程传递的消息，用onmessage事件处理器
+    worker.onmessage = function(e) {
+      document.getElementById('result').innerHTML = e.data;
+    }
+  </script>
+</body>
+</html>

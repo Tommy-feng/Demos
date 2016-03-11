@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DelegationWorker</title>
+</head>
+<body>
+  <output id="response_from_worker">
+    Shared worker example: how to use delegation worker in HTML5
+  </output>
+
+  <script>
+    var worker = new SharedWorker('delegationWorker.js');
+    var log = document.getElementById('response_from_worker');
+    worker.port.onmessage = function(e) {
+      var resultData = e.data;
+      var population = resultData.total_population;
+      var showText = 'The total population of the world is ' + population;
+      document.getElementById('response_from_worker').textContent = showText;
+    };
+    worker.port.start();
+  </script>
+</body>
+</html>

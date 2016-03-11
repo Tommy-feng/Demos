@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SharedWorker</title>
+</head>
+<body>
+  <output id='response_from_worker'>
+  Shared worker example: how to use shared worker in HTML5
+  </output>
+  <br>
+  send instructions to shared worker:
+  <input type="text" autofocus oninput="postMessageToSharedWorker(this);return false;">
+  </input>
+
+  <script>
+   //构造一个新的sharedWorker
+   var worker = new SharedWorker('sharedWorker.js');
+   var log = document.getElementById('response_from_worker');
+
+   //监听message事件
+   worker.port.addEventListener('message', function(e){
+     log.innerHTML = e.data;
+   }, false);
+
+   //端口的连接
+   worker.port.start();
+  </script>
+</body>
+</html>

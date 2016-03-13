@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geolocation</title>
+  <style>
+    #allmap {width:100%; height: 500px;}
+  </style>
+</head>
+<body>
+  <p id="support" style="display:none;"></p>
+  <p id="status"></p>
+
+  <h2>当前位置：</h2>
+    <tr>
+      <table border="1">
+      <td>纬度：</td>
+      <td id="latitude"></td>
+    </tr>
+    <tr>
+      <td>经度：</td>
+      <td id="longitude"></td>
+    </tr>
+    <tr>
+      <td>误差：</td>
+      <td id="accuracy"></td>
+    </tr>
+    <tr>
+      <td>时间戳：</td>
+      <td id="timestamp"></td>
+    </tr>
+  </table>
+
+  <h4 id="currentDist">当前移动距离：0.0 km</h4>
+  <h4 id="totalDist">总共移动距离：0.0 km</h4>
+
+  <div id="allmap"></div>
+
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ofVGdHsgYzYL8GxGc8WTkpqa"></script>
+  <script src='location.js'></script>
+</body>
+</html>
